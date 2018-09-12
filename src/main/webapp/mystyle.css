@@ -1,0 +1,38 @@
+
+body{
+ background-image:url("http://evolutionarydesigns.net/photography/wp-content/uploads/2011/10/store-1-vintage-2.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+}
+
+h2{
+font-size: 30px;
+color: white;
+
+}
+
+.box-1{
+font-size: 20px;
+border: 1px solid black;
+opacity: 0.6;
+filter: alpha(opacity=60);
+margin: 30px;
+background-color: #fff;
+}
+
+
+.container{
+width:200px;
+margin-right: 200px
+margin-bottom:400px;
+}
+
+/*
+.box-1{
+background-color: #AAACE1;
+border: 5px white solid;
+padding-top:18px;
+padding-left: 18px;
+padding-right: 0;
+}
+*/
