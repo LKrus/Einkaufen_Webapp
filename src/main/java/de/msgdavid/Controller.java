@@ -67,7 +67,6 @@ public class Controller extends HttpServlet {
             nextJSP = "/warenkorb.jsp";
         } else if (action.equals("warenkorb")) {
             nextJSP = "/kassenbon.jsp";
-
         } else if (action.equals("home")) {
             nextJSP = "/home.jsp";
         } else {

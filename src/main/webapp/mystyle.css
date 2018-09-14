@@ -1,38 +1,120 @@
 
-body{
- background-image:url("http://evolutionarydesigns.net/photography/wp-content/uploads/2011/10/store-1-vintage-2.jpg");
-background-repeat: no-repeat;
-background-size: 100%;
+body {
+    background-image: url("https://cbsnews1.cbsistatic.com/hub/i/r/2017/04/19/1d7ed51b-8d00-4d73-8a66-aae0f62d15fe/thumbnail/1200x630/3bd4f62ac8a305ce63731745ad03b670/grocery-cart-istock-481193166.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-top: 20px;
 }
 
-h2{
-font-size: 30px;
-color: white;
+header {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    background-color: forestgreen;
+    padding-top: 10px;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    margin-top: 90px;
+}
+
+.box-1 {
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    background-color: #fff;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 6px;
+    padding-top: 18px;
 
 }
 
-.box-1{
-font-size: 20px;
-border: 1px solid black;
-opacity: 0.6;
-filter: alpha(opacity=60);
-margin: 30px;
-background-color: #fff;
+.box-2 {
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding-top: 18px;
+    padding-bottom: 18px;
 }
 
-
-.container{
-width:200px;
-margin-right: 200px
-margin-bottom:400px;
+.button {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-left: 100px;
+    border-radius: 6px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/*
-.box-1{
-background-color: #AAACE1;
-border: 5px white solid;
-padding-top:18px;
-padding-left: 18px;
-padding-right: 0;
+.button:hover{
+    background-color: forestgreen;
+    color: white;
 }
-*/
+
+footer {
+    position: fixed;
+    padding: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    background-color: forestgreen;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    margin-left: 100px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+li a:hover {
+    background-color: darkgreen;
+    border-radius: 6px;
+}
