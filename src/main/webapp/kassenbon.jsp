@@ -6,12 +6,7 @@
 </head>
 <body>
 <header>
-    Header
-    <ul>
-        <li><a href="#home.jsp">Home</a></li>
-        <li><a href="#warenkorb.jsp">Warenkorb</a></li>
-        <li><a href="#kassenbon.jsp">Kasse</a></li>
-    </ul>
+    <jsp:include page="header.jsp"></jsp:include>
 </header>
 <h2>Kassenbon:</h2>
 <div class="box-2">

@@ -7,12 +7,7 @@
 </head>
 <body>
 <header>
-    Header
-    <ul>
-        <li><a href="#home.jsp">Home</a></li>
-        <li><a href="#warenkorb.jsp">Warenkorb</a></li>
-        <li><a href="#kassenbon.jsp">Kasse</a></li>
-    </ul>
+    <jsp:include page="header.jsp"></jsp:include>
 </header>
 <h2>Warenkorb:</h2>
 <%
@@ -29,13 +24,13 @@
                     artikelstring += selectedArtikel[i] + ",";
         %>
         <br>
-        <input type="number" name="i" value="0" min="0"/>
+        <input type="number" class="number" name="i" value="0" min="0"/>
         <br>
         <br>
         <%
                 }
             } else {
-                out.println("nichts gew&auml;hlt");
+                out.println("Sie haben nichts gew&auml;hlt.");
             }
             session.setAttribute("artikelstring", artikelstring);
         %>
@@ -43,7 +38,7 @@
     <%
         if(selectedArtikel!=null){
             %>
-    <input type="submit" value="Zur Kasse" name="submit" onclick="" class="button"/>
+    <input type="submit" value="Bezahlen" name="submit" onclick="" class="button"/>
     <%
         }
     %>

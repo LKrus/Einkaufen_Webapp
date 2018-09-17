@@ -72,7 +72,6 @@ public class Controller extends HttpServlet {
         } else {
             nextJSP = "/home.jsp";
         }
-
         RequestDispatcher dispatcher = request.getRequestDispatcher(nextJSP);
         request.setAttribute("list", Auswahl.getArrayListAusArtikeln());
 
