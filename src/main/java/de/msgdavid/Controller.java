@@ -59,8 +59,9 @@ public class Controller extends HttpServlet {
                 request.setAttribute("summe", Rechnungen.getSumme(gesamtPreisListe));
             }
         }
-        action = request.getParameter("action");
 
+        try {
+        action = request.getParameter("action");
         if (action == null) {
             nextJSP = "/home.jsp";
         } else if (action.equals("auswahl")) {
@@ -69,8 +70,21 @@ public class Controller extends HttpServlet {
             nextJSP = "/kassenbon.jsp";
         } else if (action.equals("home")) {
             nextJSP = "/home.jsp";
+        } else if (action.equals("administration")) {
+            nextJSP = "/login.jsp";
+        } else if (action.equals("anmelden")) {
+            if (request.getParameter("j_password").equals("admin")) {
+                nextJSP = "/administration.jsp";
+            }else {
+                log.info("password falsch");
+                nextJSP = "/login.jsp?error=falsches Password";
+            }
         } else {
             nextJSP = "/home.jsp";
+        }
+        } catch (Exception e) {
+            log.error("fehler in doget");
+            nextJSP = "/error.jsp?error" + e.toString();
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(nextJSP);
         request.setAttribute("list", Auswahl.getArrayListAusArtikeln());
