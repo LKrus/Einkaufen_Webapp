@@ -1,6 +1,7 @@
 package de.msgdavid;
 
 import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -45,15 +46,16 @@ public class Controller extends HttpServlet {
         HttpSession session = request.getSession();
 
         String sArtikel = (String) session.getAttribute("artikelstring");
-        log.info("artikel: "+sArtikel);
+        log.info("artikel: " + sArtikel);
 
-        if (sArtikel!=null){
+
+        if (sArtikel != null) {
             String[] menge = request.getParameterValues("i");
 
             request.setAttribute("preisliste", Rechnungen.getPreisListe(sArtikel));
 
-            log.info("menge: "+Arrays.toString(menge) + " artikel: " + sArtikel);
-            if (menge!=null) {
+            log.info("menge: " + Arrays.toString(menge) + " artikel: " + sArtikel);
+            if (menge != null) {
                 ArrayList<Double> gesamtPreisListe = Kasse.getGesamtPreise(sArtikel, menge);
                 request.setAttribute("gesamtpreisliste", gesamtPreisListe);
                 request.setAttribute("summe", Rechnungen.getSumme(gesamtPreisListe));
@@ -61,27 +63,39 @@ public class Controller extends HttpServlet {
         }
 
         try {
-        action = request.getParameter("action");
-        if (action == null) {
-            nextJSP = "/home.jsp";
-        } else if (action.equals("auswahl")) {
-            nextJSP = "/warenkorb.jsp";
-        } else if (action.equals("warenkorb")) {
-            nextJSP = "/kassenbon.jsp";
-        } else if (action.equals("home")) {
-            nextJSP = "/home.jsp";
-        } else if (action.equals("administration")) {
-            nextJSP = "/login.jsp";
-        } else if (action.equals("anmelden")) {
-            if (request.getParameter("j_password").equals("admin")) {
+            action = request.getParameter("action");
+            if (action == null) {
+                nextJSP = "/home.jsp";
+            } else if (action.equals("auswahl")) {
+                nextJSP = "/warenkorb.jsp";
+            } else if (action.equals("warenkorb")) {
+                nextJSP = "/kassenbon.jsp";
+            } else if (action.equals("home")) {
+                nextJSP = "/home.jsp";
+            } else if (action.equals("administration")) {
+                nextJSP = "/login.jsp";
+            } else if (action.equals("anmelden")) {
+                if (request.getParameter("j_password").equals("admin")) {
+                    nextJSP = "/administration.jsp";
+                } else {
+                    log.info("password falsch");
+                    nextJSP = "/login.jsp?error=falsches Password";
+                }
+            } else if (action.equals("uebernehmen")) {
+                String[] markierteArtikel = request.getParameterValues("markierteartikel");
+                if (markierteArtikel != null) {
+                    log.info("markierte Artikel: " + Arrays.toString(markierteArtikel));
+                    Util.artikelUeberschreiben(markierteArtikel);
+                }
+                String neuerArtikel = request.getParameter("textfeld");
+                if (neuerArtikel != null) {
+                    log.info("neuer Artikel: " + neuerArtikel);
+                    Util.artikelHinzufuegen(neuerArtikel);
+                }
                 nextJSP = "/administration.jsp";
-            }else {
-                log.info("password falsch");
-                nextJSP = "/login.jsp?error=falsches Password";
+            } else {
+                nextJSP = "/home.jsp";
             }
-        } else {
-            nextJSP = "/home.jsp";
-        }
         } catch (Exception e) {
             log.error("fehler in doget");
             nextJSP = "/error.jsp?error" + e.toString();
