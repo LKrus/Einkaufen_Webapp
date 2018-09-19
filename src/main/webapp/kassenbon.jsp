@@ -22,10 +22,8 @@
         out.println(date.format(formatter));
     %>
 ---
-
     <br>
     <br>
-
     <%
         String artikelstring = (String) session.getAttribute("artikelstring");
         if (artikelstring == null) {

@@ -130,6 +130,7 @@ h2 {
     cursor: pointer;
     border-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;
+    opacity: 1!important;
 }
 
 .button2:hover {

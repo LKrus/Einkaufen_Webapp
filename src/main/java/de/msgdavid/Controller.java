@@ -45,22 +45,15 @@ public class Controller extends HttpServlet {
         String action = null;
         HttpSession session = request.getSession();
 
+//        try {
+//            Verschluesselung.verschluesseln();
+//        } catch (Exception e) {
+//            log.info("exception beim verschlüüseln oder so");
+//        }
+
+
         String sArtikel = (String) session.getAttribute("artikelstring");
         log.info("artikel: " + sArtikel);
-
-
-        if (sArtikel != null) {
-            String[] menge = request.getParameterValues("i");
-
-            request.setAttribute("preisliste", Rechnungen.getPreisListe(sArtikel));
-
-            log.info("menge: " + Arrays.toString(menge) + " artikel: " + sArtikel);
-            if (menge != null) {
-                ArrayList<Double> gesamtPreisListe = Kasse.getGesamtPreise(sArtikel, menge);
-                request.setAttribute("gesamtpreisliste", gesamtPreisListe);
-                request.setAttribute("summe", Rechnungen.getSumme(gesamtPreisListe));
-            }
-        }
 
         try {
             action = request.getParameter("action");
@@ -69,13 +62,27 @@ public class Controller extends HttpServlet {
             } else if (action.equals("auswahl")) {
                 nextJSP = "/warenkorb.jsp";
             } else if (action.equals("warenkorb")) {
+                if (sArtikel != null) {
+                    String[] menge = request.getParameterValues("i");
+
+                    request.setAttribute("preisliste", Rechnungen.getPreisListe(sArtikel));
+
+                    log.info("menge: " + Arrays.toString(menge) + " artikel: " + sArtikel);
+                    if (menge != null) {
+                        ArrayList<Double> gesamtPreisListe = Kasse.getGesamtPreise(sArtikel, menge);
+                        request.setAttribute("gesamtpreisliste", gesamtPreisListe);
+                        request.setAttribute("summe", Rechnungen.getSumme(gesamtPreisListe));
+                    }
+                }
                 nextJSP = "/kassenbon.jsp";
             } else if (action.equals("home")) {
                 nextJSP = "/home.jsp";
             } else if (action.equals("administration")) {
                 nextJSP = "/login.jsp";
             } else if (action.equals("anmelden")) {
-                if (request.getParameter("j_password").equals("admin")) {
+                String jpasswort = request.getParameter("j_password");
+                String passwort = Verschluesselung.verschluesseln(jpasswort);
+                if (passwort.equals("21232f297a57a5a743894a0e4a801fc3")) {  
                     nextJSP = "/administration.jsp";
                 } else {
                     log.info("password falsch");
