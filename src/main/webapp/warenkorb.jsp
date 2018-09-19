@@ -1,3 +1,5 @@
+<%@ page import="de.msgdavid.Artikel" %>
+<%@ page import="java.util.ArrayList" %>
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <html>
 <head>
@@ -16,18 +18,23 @@
 <form action="einkaufen?action=warenkorb" method="POST">
     <div class="box-2">
         <%
+            ArrayList<Artikel> list = (ArrayList<Artikel>) request.getAttribute("list");
             String[] selectedArtikel = request.getParameterValues("artikel");
 
             if (selectedArtikel != null) {
                 for (int i = 0; i < selectedArtikel.length; i++) {
-                    out.println(" " + selectedArtikel[i]);
-                    artikelstring += selectedArtikel[i] + ",";
+                    for (Artikel artikel : list) {
+                        if (selectedArtikel[i].equals(artikel.getName())) {
+                            out.println(selectedArtikel[i] + ", " + artikel.getPreis()+"&#8364;");
+                            artikelstring += selectedArtikel[i] + ",";
         %>
         <br>
         <input type="number" class="number" name="i" value="0" min="0"/>
         <br>
         <br>
         <%
+                        }
+                    }
                 }
             } else {
                 out.println("Sie haben nichts gew&auml;hlt.");
@@ -36,8 +43,8 @@
         %>
     </div>
     <%
-        if(selectedArtikel!=null){
-            %>
+        if (selectedArtikel != null) {
+    %>
     <input type="submit" value="Bezahlen" name="submit" onclick="" class="button"/>
     <%
         }

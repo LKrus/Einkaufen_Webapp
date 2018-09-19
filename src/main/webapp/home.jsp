@@ -24,11 +24,9 @@
         %>
         <label>
             <input type="checkbox" name="artikel" value="<%= artikel.getName() %>"/>
-        </label><%= artikel.getName() %>
+        </label><%= artikel.getName() %>, <%= artikel.getPreis() %>&#8364;
         <br>
         <%
-
-
             }
         } else if (sArtikel != null) {
             String[] selectedArtikel = sArtikel.split(",");
@@ -43,14 +41,14 @@
         %>
         <label>
             <input type="checkbox" class="checkbox" name="artikel" value="<%= artikel.getName() %>" checked/>
-        </label><%= artikel.getName() %>
+        </label><%= artikel.getName() %>, <%= artikel.getPreis() %>&#8364;
         <br>
         <%
         } else if (!vorhanden) {
         %>
         <label>
             <input type="checkbox" class="checkbox" name="artikel" value="<%= artikel.getName() %>"/>
-        </label><%= artikel.getName() %>
+        </label><%= artikel.getName() %>, <%= artikel.getPreis() %>&#8364;
         <br>
         <%
                     }
