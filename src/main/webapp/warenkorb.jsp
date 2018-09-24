@@ -6,11 +6,11 @@
     <link rel="stylesheet" type="text/css" href="mystyle.css">
     <meta charset="UTF-8"/>
     <title>Warenkorb</title>
-</head>
-<body>
-<header>
     <jsp:include page="header.jsp"></jsp:include>
-</header>
+</head>
+<div class="background-body">
+<body>
+
 <h2>Warenkorb:</h2>
 <%
     String artikelstring = "";
@@ -59,4 +59,5 @@
     Footer
 </footer>
 </body>
+</div>
 </html>

@@ -1,12 +1,26 @@
 
-body {
+.background-body {
     background-image: url("https://cbsnews1.cbsistatic.com/hub/i/r/2017/04/19/1d7ed51b-8d00-4d73-8a66-aae0f62d15fe/thumbnail/1200x630/3bd4f62ac8a305ce63731745ad03b670/grocery-cart-istock-481193166.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     padding-top: 20px;
+    width: 100%!important;
+    height: 100vh;
+    /*background-color: rgba(224, 232, 242, 0.42);*/
 }
 
-header {
+body{
+    margin: 0px;
+}
+
+.headline {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.head-back {
     position: fixed;
     top: 0px;
     left: 0;
@@ -79,7 +93,7 @@ h2 {
     font-family: Arial, Helvetica, sans-serif;
     border: 1px solid black;
     opacity: 0.6;
-    filter: alpha(opacity=60);
+
     background-color: #fff;
     margin-left: 100px;
     margin-right: 100px;
@@ -109,6 +123,7 @@ h2 {
     margin-left: 100px;
     border-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .button:hover {
@@ -130,7 +145,7 @@ h2 {
     cursor: pointer;
     border-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;
-    opacity: 1!important;
+    opacity: 1.0!important;
 }
 
 .button2:hover {
@@ -139,17 +154,19 @@ h2 {
     font-size: 22px;
 }
 
+
 footer {
-    position: fixed;
-    padding: 10px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: #fff;
+    padding: 5px 0px;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
+    color: #fff;
     background-color: forestgreen;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    overflow: revert;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 ul {
@@ -189,5 +206,9 @@ li a:hover {
 
 .text {
     font-size: 18px;
-    color: #ff2c76;
+    color: #ff5939;
+}
+
+.buttonborder{
+    margin-bottom: 70px;
 }

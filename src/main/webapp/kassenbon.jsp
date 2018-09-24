@@ -5,11 +5,10 @@
     <%@ page import="java.time.format.DateTimeFormatter" %>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
     <title>Kasse</title>
-</head>
-<body>
-<header>
     <jsp:include page="header.jsp"></jsp:include>
-</header>
+</head>
+<div class="background-body">
+<body>
 <h2>Kassenbon:</h2>
 <div class="box-2">
     Mein Einkauf:
@@ -66,4 +65,5 @@
     Footer
 </footer>
 </body>
+</div>
 </html>
