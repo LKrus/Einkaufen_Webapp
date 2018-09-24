@@ -33,7 +33,13 @@ public class Util {
         }
     }
 
-    public static void artikelHinzufuegen(String neuerArtikel) {
+    public static void artikelHinzufuegen(String neuerArtikelName, String euro, String cent) {
+        String neuerArtikel = "";
+
+            neuerArtikel = neuerArtikelName + "," + euro + "." + cent + ";";
+
+        log.info("neuer Artikel String: " + neuerArtikel);
+
         try {
             FileWriter fr = new FileWriter("C:\\Mein_Praktikum_Leonie\\Projekte\\Einkaufen\\files\\e.csv", true);
             fr.append(neuerArtikel);
@@ -42,5 +48,26 @@ public class Util {
         } catch (IOException e) {
             log.info("file Writer exception");
         }
+    }
+
+    public static boolean eingabeUeberpruefen(String eingabe) {
+        String buchstaben = "abcdefghijklmnopqrstuvwxyz";
+        String zeichen = "0123456789!§$%&/()=?`´^°<>|.:-_+#*'~{[]} ";
+        int zaehler = 0;
+        char[] eingabenarray = eingabe.toCharArray();
+        boolean eingabekorrekt = false;
+
+
+        for (int i = 0; i < eingabe.length(); i++) {
+
+            if (buchstaben.contains(String.valueOf(eingabenarray[i])) || buchstaben.toUpperCase().contains(String.valueOf(eingabenarray[i])) || zeichen.contains(String.valueOf(eingabenarray[i]))) {
+                zaehler++;
+            }
+        }
+
+        if (zaehler == eingabe.length()) {
+            eingabekorrekt = true;
+        }
+        return eingabekorrekt;
     }
 }

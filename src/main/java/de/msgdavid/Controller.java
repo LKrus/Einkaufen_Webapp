@@ -45,13 +45,6 @@ public class Controller extends HttpServlet {
         String action = null;
         HttpSession session = request.getSession();
 
-//        try {
-//            Verschluesselung.verschluesseln();
-//        } catch (Exception e) {
-//            log.info("exception beim verschlüüseln oder so");
-//        }
-
-
         String sArtikel = (String) session.getAttribute("artikelstring");
         log.info("artikel: " + sArtikel);
 
@@ -82,24 +75,29 @@ public class Controller extends HttpServlet {
             } else if (action.equals("anmelden")) {
                 String jpasswort = request.getParameter("j_password");
                 String passwort = Verschluesselung.verschluesseln(jpasswort);
-                if (passwort.equals("21232f297a57a5a743894a0e4a801fc3")) {  
+                if (passwort.equals("21232f297a57a5a743894a0e4a801fc3")) {
                     nextJSP = "/administration.jsp";
                 } else {
                     log.info("password falsch");
-                    nextJSP = "/login.jsp?error=falsches Password";
+                    nextJSP = "/login.jsp?error=falsches Passwort!";
                 }
             } else if (action.equals("uebernehmen")) {
+                String neuerArtikelName = request.getParameter("textfeld");
+                String euro = request.getParameter("euro");
+                String cent = request.getParameter("cent");
                 String[] markierteArtikel = request.getParameterValues("markierteartikel");
                 if (markierteArtikel != null) {
                     log.info("markierte Artikel: " + Arrays.toString(markierteArtikel));
                     Util.artikelUeberschreiben(markierteArtikel);
+                    nextJSP = "/administration.jsp";
+                }else if (neuerArtikelName != null && euro != null && cent != null && Util.eingabeUeberpruefen(neuerArtikelName)) {
+                    log.info("neuer Artikel: " + neuerArtikelName + ", euro: " + euro + ", cent: " + cent);
+                    Util.artikelHinzufuegen(neuerArtikelName, euro, cent);
+                    nextJSP = "/administration.jsp";
+                } else {
+                    log.info("falsche eingabe beim artikel");
+                    nextJSP = "/administration.jsp?errorr=keine gultige Eingabe, keine Kommas oder Semikolon im Artikelnamen";
                 }
-                String neuerArtikel = request.getParameter("textfeld");
-                if (neuerArtikel != null) {
-                    log.info("neuer Artikel: " + neuerArtikel);
-                    Util.artikelHinzufuegen(neuerArtikel);
-                }
-                nextJSP = "/administration.jsp";
             } else {
                 nextJSP = "/home.jsp";
             }
@@ -107,6 +105,8 @@ public class Controller extends HttpServlet {
             log.error("fehler in doget");
             nextJSP = "/error.jsp?error" + e.toString();
         }
+        log.info("nextjsp= " + nextJSP);
+        log.info("errorr: " + request.getParameter("errorr"));
         RequestDispatcher dispatcher = request.getRequestDispatcher(nextJSP);
         request.setAttribute("list", Auswahl.getArrayListAusArtikeln());
 

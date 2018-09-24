@@ -1,14 +1,9 @@
-<html>
 <head>
-    <%@ page import="de.msgdavid.Artikel" %>
-    <%@ page import="java.util.ArrayList" %>
-    <title>Einkaufen</title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+<jsp:include page="header.jsp"></jsp:include>
 </head>
-<body>
-<header>
-    <jsp:include page="header.jsp"></jsp:include>
-</header>
+<%@ page import="de.msgdavid.Artikel" %>
+    <%@ page import="java.util.ArrayList" %>
+<div class="background-body">
 <h2>Angebot:</h2>
 <br/>
 <form action="einkaufen?action=auswahl" method="POST">
@@ -60,13 +55,11 @@
 
     <input type="submit" value="In den Warenkorb" name="submit" onclick="" class="button"/>
 </form>
-<form action="einkaufen?action=administration" method="POST">
+<form action="einkaufen?action=administration" method="POST" class="buttonborder">
     <input type="submit" value="Administration" name="submit" onclick="" class="button"/>
 </form>
+</div>
 
 <footer>
-    Footer
+<jsp:include page="footer.jsp"></jsp:include>
 </footer>
-
-</body>
-</html>

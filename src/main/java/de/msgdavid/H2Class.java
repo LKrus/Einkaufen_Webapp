@@ -28,8 +28,8 @@ public class H2Class {
         try {
             connection.setAutoCommit(false);
             stmt = connection.createStatement();
-            stmt.execute("CREATE TABLE PERSON(id int primary key, name varchar(255))");
-            stmt.execute("INSERT INTO PERSON(id, name) VALUES(1, 'Anju')");
+            stmt.execute("CREATE TABLE ARTIKEL(id int primary key, name varchar(255))");
+            stmt.execute("INSERT INTO ARTIKEL(id, name) VALUES(1, 'Brot')");
 
 
             ResultSet rs = stmt.executeQuery("select * from PERSON");
@@ -38,7 +38,7 @@ public class H2Class {
                 System.out.println("Id " + rs.getInt("id") + " Name " + rs.getString("name"));
             }
 
-            stmt.execute("DROP TABLE PERSON");
+            stmt.execute("DROP TABLE ARTIKEL");
             stmt.close();
             connection.commit();
         } catch (SQLException e) {
@@ -57,9 +57,9 @@ public class H2Class {
         PreparedStatement insertPreparedStatement = null;
         PreparedStatement selectPreparedStatement = null;
 
-        String CreateQuery = "CREATE TABLE PERSON(id int primary key, name varchar(255))";
-        String InsertQuery = "INSERT INTO PERSON" + "(id, name) values" + "(?,?)";
-        String SelectQuery = "select * from PERSON";
+        String CreateQuery = "CREATE TABLE ARTIKEL(id int primary key, name varchar(255))";
+        String InsertQuery = "INSERT INTO ARTIKEL" + "(id, name) values" + "(?,?)";
+        String SelectQuery = "select * from ARTIKEL";
 
         try {
             connection.setAutoCommit(false);
@@ -70,7 +70,7 @@ public class H2Class {
 
             insertPreparedStatement = connection.prepareStatement(InsertQuery);
             insertPreparedStatement.setInt(1, 1);
-            insertPreparedStatement.setString(2, "Jose");
+            insertPreparedStatement.setString(2, "Wasser");
             insertPreparedStatement.executeUpdate();
             insertPreparedStatement.close();
 
