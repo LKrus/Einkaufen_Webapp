@@ -58,7 +58,7 @@
     %>
 </div>
 <br>
-<form action="einkaufen?action=home" method="POST">
+<form action="einkaufen" method="POST">
     <input type="submit" value="Weiter einkaufen" name="submit" onclick="" class="button"/>
 </form>
 <footer>
