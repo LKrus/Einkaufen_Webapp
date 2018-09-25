@@ -1,15 +1,28 @@
 <html>
 <head>
     <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.time.LocalDateTime" %>
+    <%@ page import="java.time.format.DateTimeFormatter" %>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
     <title>Kasse</title>
-</head>
-<body>
-<header>
     <jsp:include page="header.jsp"></jsp:include>
-</header>
+</head>
+<div class="background-body">
+<body>
 <h2>Kassenbon:</h2>
 <div class="box-2">
+    Mein Einkauf:
+    <br>
+    <br>
+---
+    <%
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.L.y - H:m");
+        out.println(date.format(formatter));
+    %>
+---
+    <br>
+    <br>
     <%
         String artikelstring = (String) session.getAttribute("artikelstring");
         if (artikelstring == null) {
@@ -24,7 +37,7 @@
 
             for (int i = 0; i < preisliste.size(); i++) {
                 if (gesamtpreisliste.get(i) > 0) {
-                    out.println(artikel[i] + " ");
+                    out.println(artikel[i] + ", ");
                     out.print(gesamtpreisliste.get(i) + "&#8364;");
     %>
     <br>
@@ -44,11 +57,13 @@
         }
     %>
 </div>
+<br>
 <form action="einkaufen?action=home" method="POST">
-<input type="submit" value="Weiter einkaufen" name="submit" onclick="" class="button"/>
+    <input type="submit" value="Weiter einkaufen" name="submit" onclick="" class="button"/>
 </form>
 <footer>
     Footer
 </footer>
 </body>
+</div>
 </html>
