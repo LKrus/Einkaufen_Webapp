@@ -15,7 +15,7 @@
 <%
     String artikelstring = "";
 %>
-<form action="einkaufen?action=warenkorb" method="POST">
+<form action="zukassenbon" method="POST">
     <div class="box-2">
         <%
             ArrayList<Artikel> list = (ArrayList<Artikel>) request.getAttribute("list");
@@ -52,7 +52,7 @@
 
 </form>
 <br>
-<form action="einkaufen?action=home" method="POST">
+<form action="einkaufen" method="POST">
     <input type="submit" value="Warenkorb &auml;ndern" name="submit" onclick="" class="button"/>
 </form>
 <footer>

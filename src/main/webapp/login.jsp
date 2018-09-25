@@ -12,19 +12,17 @@
     </header>
     <h2>Anmeldung:</h2>
     <br/>
-    <form action="einkaufen?action=anmelden" method="POST">
+    <form action="zuadmin?action=anmelden" method="POST">
         <div class="box-2">
             <label>Username</label>
             <input type="text" name="j_username"/>
             <br/>
             <label>Password: </label>
             <input type="password" name="j_password"/>
-
         </div>
-
         <input type="submit" value="Anmelden" class="button"/>
     </form>
-    <form action="einkaufen?action=home" method="POST">
+    <form action="einkaufen" method="POST">
         <input type="submit" value="Zur&uuml;ck zur Artikelauswahl" class="button"/>
     </form>
 
@@ -32,7 +30,7 @@
         String error = request.getParameter("error");
         if (error != null) {
     %>
-    <div class="box-1">
+    <div class="box-2">
         <%
             out.println("Fehler: " + error);
         %>
@@ -40,7 +38,6 @@
     <%
         }
     %>
-
     <footer>
         Footer
     </footer>
