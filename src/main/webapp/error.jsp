@@ -19,11 +19,9 @@
             }
         %>
     </div>
-
-    <form action="einkaufen?action=administration" method="POST">
+    <form action="zulogin" method="POST">
         <input type="submit" value="Zur&uuml;ck zum login" class="button"/>
     </form>
-
     <footer>
         Footer
     </footer>

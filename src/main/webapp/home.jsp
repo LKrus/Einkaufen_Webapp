@@ -6,10 +6,8 @@
 <div class="background-body">
 <h2>Angebot:</h2>
 <br/>
-<form action="einkaufen?action=auswahl" method="POST">
+<form action="zuwarenkorb" method="POST">
     <div class="box-1">
-
-
         <%
             ArrayList<Artikel> list = (ArrayList<Artikel>) request.getAttribute("list");
             String sArtikel = (String) session.getAttribute("artikelstring");
@@ -52,10 +50,9 @@
         %>
     </div>
     <br>
-
     <input type="submit" value="In den Warenkorb" name="submit" onclick="" class="button"/>
 </form>
-<form action="einkaufen?action=administration" method="POST" class="buttonborder">
+<form action="zulogin" method="POST" class="buttonborder">
     <input type="submit" value="Administration" name="submit" onclick="" class="button"/>
 </form>
 </div>

@@ -15,7 +15,7 @@
     <br/>
     <div class="flex">
         <div class="box-3">
-            <form action="einkaufen?action=uebernehmen" method="POST">
+            <form action="zuadmin?action=uebernehmen" method="POST">
                 Bisherige Auswahl:
                 <br>
                 <br>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="box-4">
-            <form action="einkaufen?action=uebernehmen" method="POST">
+            <form action="zuadmin?action=uebernehmen" method="POST">
                 Neue Artikel erstellen:
                 <br>
                 <br>
@@ -55,11 +55,9 @@
                 <input type="submit" value="Artikel hinzuf&uuml;gen" class="button2"/>
             </form>
         </div>
-
     </div>
-
     <br>
-    <form action="einkaufen?action=home" method="POST">
+    <form action="einkaufen" method="POST">
         <input type="submit" value="Zur&uuml;ck zur Artikelauswahl" class="button"/>
     </form>
 
@@ -67,7 +65,7 @@
         String errorr = request.getParameter("errorr");
         if (errorr != null) {
     %>
-    <div class="box-1">
+    <div class="box-2">
         <%
             out.println("Fehler: " + errorr);
         %>
@@ -75,7 +73,6 @@
     <%
         }
     %>
-
     <footer>
         Footer
     </footer>
